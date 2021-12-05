@@ -1,0 +1,49 @@
+<div class="wrapper">
+  <form [formGroup]="institutionForm" (ngSubmit)="onSubmit()" class="sign-form">
+    <mat-form-field class="sign-form__field" appearance="outline">
+      <mat-label>Название</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="Name"
+        minlength="5"
+        placeholder="pat@example.com"
+        autocomplete="off"
+      />
+    </mat-form-field>
+    <mat-form-field class="sign-form__field" appearance="outline">
+      <mat-label>Почта</mat-label>
+      <input type="email" matInput formControlName="Email" placeholder="pat@example.com" autocomplete="off" />
+    </mat-form-field>
+    <mat-form-field class="sign-form__field" appearance="outline">
+      <mat-label>Сайт</mat-label>
+      <input type="text" matInput formControlName="Website" placeholder="pat@example.com" autocomplete="off" />
+    </mat-form-field>
+    <div class="sign-submit">
+      <button type="submit" mat-mini-fab color="primary" [disabled]="!institutionForm.valid">
+        <mat-icon class="sign-submit__icon">send</mat-icon>
+      </button>
+    </div>
+  </form>
+
+  <div *ngFor="let institution of institutions" class="doc">
+    <div>Название: {{ institution.name }}</div>
+    <div>Почта: {{ institution.email }}</div>
+    <div>Сайт: {{ institution.website }}</div>
+    <h3 style="margin-top: 1rem">Добавить доктора</h3>
+    <form
+      (submit)="$event.preventDefault(); assignDoctorAndInst(inp.value, institution.id)"
+      style="margin-top: 1rem; flex-direction: row; align-items: center"
+    >
+      <mat-form-field class="sign-form__field" appearance="outline">
+        <mat-label>Id доктора</mat-label>
+        <input #inp type="text" matInput placeholder="pat@example.com" autocomplete="off" />
+      </mat-form-field>
+      <div class="sign-submit" style="margin-left: 1rem; margin-top: 0">
+        <button type="submit" mat-mini-fab color="primary" [disabled]="!inp.value">
+          <mat-icon class="sign-submit__icon">send</mat-icon>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<form *ngIf="docForm && doc" [formGroup]="docForm" (ngSubmit)="onSubmit()" class="sign-form">
+  <mat-form-field class="sign-form__field" appearance="outline">
+    <mat-label>Название</mat-label>
+    <input type="text" matInput formControlName="Title" placeholder="" autocomplete="off" />
+    <mat-error *ngIf="!docForm.controls.Title.hasError('required')"> Введите корректное значение! </mat-error>
+    <mat-error *ngIf="docForm.controls.Title.hasError('required')"> Поле <strong>обязательное</strong>! </mat-error>
+  </mat-form-field>
+  <div>
+    <h3>{{ doc.indicator.name }}</h3>
+    <mat-form-field
+      class="sign-form__field"
+      appearance="outline"
+      *ngFor="let control of indicatordFormArray.controls"
+      [formGroup]="getFormGroupByControl(control)"
+    >
+      <mat-label>{{ control.value.name }}</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="IndicatorValue"
+        placeholder=""
+        autocomplete="off"
+      />
+      <mat-error *ngIf="!getFormGroupByControl(control).controls.IndicatorValue.hasError('required')">
+        Введите корректное значение!
+      </mat-error>
+      <mat-error *ngIf="getFormGroupByControl(control).controls.IndicatorValue.hasError('required')">
+        Поле <strong>обязательное</strong>!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <mat-error *ngIf="showError" class="sign-form__field">{{ showError || "Заполните корректно форму!" }}</mat-error>
+  <div class="sign-submit">
+    <button type="submit" mat-mini-fab color="primary" [disabled]="!docForm.valid && showError">
+      <mat-icon class="sign-submit__icon">send</mat-icon>
+    </button>
+  </div>
+</form>

@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <form (ngSubmit)="loadDocTypes()" style="display: flex; justify-content: center; width: 100%">
+    <mat-form-field class="sign-form__field" appearance="outline">
+      <mat-label>Поиск</mat-label>
+      <input
+        type="text"
+        matInput
+        [(ngModel)]="search"
+        [ngModelOptions]="{ standalone: true }"
+        autocomplete="off"
+      />
+      <button mat-icon-button matSuffix type="submit">
+        <mat-icon> search </mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
+
+  <div *ngFor="let item of docTypes" class="doc-type" style="margin-top: 1rem">
+    <h2>{{ item.name }}</h2>
+    <div>
+      <div *ngFor="let ind of item.indicators" class="ind-item">
+        <div>{{ ind.name }}</div>
+      </div>
+    </div>
+    <button mat-raised-button (click)="removeDocType(item)">Удалить</button>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<mat-tab-group mat-align-tabs="center" style="height: 100%;">
+  <mat-tab label="Шаблоны">
+    <app-doc-type-detail (updateDocTypes)="loadDocType($event)" [docTypes]="docTypes"></app-doc-type-detail>
+  </mat-tab>
+  <mat-tab label="Создать шаблон">
+    <app-doc-type-new (updateDocTypes)="loadDocType()" style="height: 100%;"></app-doc-type-new>
+  </mat-tab>
+</mat-tab-group>

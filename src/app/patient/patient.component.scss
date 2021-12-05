@@ -1,0 +1,13 @@
+.sign-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sign-form__field{
+    width: 30rem;
+    font-size: inherit;
+    font-family: inherit;
+    letter-spacing: 0.15em;
+}

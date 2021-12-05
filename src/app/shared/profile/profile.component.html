@@ -1,0 +1,24 @@
+<h1>Профиль</h1>
+<form *ngIf="profileForm" [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="sign-form">
+  <mat-form-field class="sign-form__field" appearance="outline">
+    <mat-label>Имя</mat-label>
+    <input type="text" matInput formControlName="Firstname" autocomplete="off" />
+  </mat-form-field>
+  <mat-form-field class="sign-form__field" appearance="outline">
+    <mat-label>Фамилия</mat-label>
+    <input type="text" matInput formControlName="Lastname" autocomplete="off" />
+  </mat-form-field>
+  <mat-form-field class="sign-form__field" appearance="outline">
+    <mat-label>Дата рождения</mat-label>
+    <input type="date" matInput formControlName="DateOfBirth" autocomplete="off" />
+  </mat-form-field>
+  <mat-form-field class="sign-form__field" appearance="outline">
+    <mat-label>Адрес</mat-label>
+    <input type="text" matInput formControlName="HomeAddress" autocomplete="off" />
+  </mat-form-field>
+  <div class="sign-submit"></div>
+  <div style="margin-left: auto; width: fit-content">
+    <button type="submit" mat-raised-button color="primary" [disabled]="!profileForm.valid" style="margin-right: 1rem;">Обновить</button>
+    <button mat-raised-button color="primary" mat-dialog-close>Закрыть</button>
+  </div>
+</form>

@@ -1,0 +1,20 @@
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="sign-form">
+  <mat-form-field class="sign-form__field" appearance="outline">
+    <mat-label>Поиск</mat-label>
+    <input type="text" matInput formControlName="search" placeholder="123" autocomplete="off" />
+    <mat-error
+      *ngIf="searchForm.controls.search.hasError('minlength') && !searchForm.controls.search.hasError('required')"
+    >
+      Введите корректное значение!
+    </mat-error>
+    <mat-error *ngIf="searchForm.controls.search.hasError('required')"> <strong>Поле обязательное</strong>! </mat-error>
+  </mat-form-field>
+  <mat-error *ngIf="showError" class="sign-form__field">{{ showError || "Заполните корректно форму!" }}</mat-error>
+  <div class="sign-submit">
+    <a [routerLink]="[searchForm.controls.search.value]">
+      <button type="submit" mat-mini-fab color="primary" [disabled]="!searchForm.valid && showError">
+        <mat-icon class="sign-submit__icon">send</mat-icon>
+      </button>
+    </a>
+  </div>
+</form>

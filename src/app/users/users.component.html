@@ -1,0 +1,21 @@
+<div>
+  <div *ngFor="let user of users" class="doc">
+    <div style="display: flex; gap: 1rem">
+      <h2>{{ user.id }}</h2>
+      <h2>{{ user.email }}</h2>
+    </div>
+    <h4>Роль: {{ user.role.id === 3 ? "Администратор" : user.role.id === 2 ? "Доктор" : "Пациент" }}</h4>
+    <h4>Логин: {{ user.login }}</h4>
+    <div style="display: flex; gap: 1rem">
+      <h4>{{ user.lastname }}</h4>
+      <h4>{{ user.firstname }}</h4>
+    </div>
+    <div *ngIf="user.role.id === 1">
+      <h4>Дата рождения: {{ user.dateOfBirth | date }}</h4>
+      <h4>Адрес: {{ user.homeAddress }}</h4>
+    </div>
+    <button mat-raised-button (click)="updateUser(user)">Изменить</button>
+    <button mat-raised-button (click)="takeDoctorRole(user)" style="margin-left: 1rem;">Дать роль доктора</button>
+    <button mat-raised-button color="warn" (click)="removeUser(user)" style="margin-left: 1rem;">Удалить</button>
+  </div>
+</div>

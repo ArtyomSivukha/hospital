@@ -1,0 +1,30 @@
+:host {
+    width: 100%;
+    height: 100%;
+    .doc {
+        background: rgba(255, 255, 255, 0.253);
+        padding: 2rem;
+        margin-top: 1rem;
+        width: 80%;
+        margin: 1rem auto;
+        border-radius: 10px;
+
+        h2 {
+            font-size: 2.4rem;
+            font-weight: 400;
+            margin: 3rem 0;
+        }
+        h4 {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+        .ind-item {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .ind-item:first-child {
+            margin-top: 5rem;
+        }
+    }
+}

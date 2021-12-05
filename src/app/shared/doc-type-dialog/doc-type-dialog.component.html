@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Выберите шаблон</h1>
+<div mat-dialog-content>
+  <div *ngIf="docTypes">
+    <div *ngFor="let item of docTypes">
+      <div>{{ item.name }}</div>
+      <button class="lay" mat-raised-button [mat-dialog-close]="item">Выбрать</button>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="undefined">Закрыть</button>
+</div>

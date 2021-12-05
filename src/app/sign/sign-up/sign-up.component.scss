@@ -1,0 +1,53 @@
+:host {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1.1, 1.1);
+}
+
+.sign-cont {
+  position: relative;
+  width: 20rem;
+  overflow: hidden;
+
+  .sign-form {
+    flex-grow: 3;
+    display: flex;
+    flex-direction: column;
+
+    .sign-form__field {
+      width: 90%;
+    }
+
+    .sign-submit {
+      display: flex;
+      justify-content: center;
+      width: min-content;
+      margin-left: auto;
+
+      .sign-submit__icon {
+        transform: rotate(-45deg) translate(0.1rem, 0);
+      }
+    }
+  }
+
+  .sign-cont__sub-title {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 1rem;
+  }
+
+  .sign-cont__title {
+    font-weight: 300;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .sign-link {
+    .sign-link__icon {
+    }
+  }
+}

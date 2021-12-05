@@ -1,0 +1,21 @@
+<div>
+  <form (ngSubmit)="loadDoc()" style="display: flex; justify-content: center; width: 100%">
+    <mat-form-field class="sign-form__field" appearance="outline">
+      <mat-label>Поиск</mat-label>
+      <input type="text" matInput [(ngModel)]="search" [ngModelOptions]="{ standalone: true }" autocomplete="off" />
+      <button mat-icon-button matSuffix type="submit">
+        <mat-icon> search </mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
+
+  <div *ngFor="let document of documents" class="doc">
+    <h2>{{ document.title }}</h2>
+    <h3>{{ document.doctor }}</h3>
+    <h4>Индикаторы:</h4>
+    <div *ngFor="let indicator of document.indicators" class="ind-item">
+      <div>{{ indicator.indicatorName }}: {{ indicator.indicatorValue }}</div>
+    </div>
+    <button mat-raised-button (click)="removeDoc(document)" *ngIf="user.role.id === 3">Удалить</button>
+  </div>
+</div>

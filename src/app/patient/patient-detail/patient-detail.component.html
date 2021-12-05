@@ -1,0 +1,29 @@
+<div *ngIf="user">
+  <h1>Пациент</h1>
+  <div class="name">
+    <div class="name_d">Имя: {{ user.lastname || "не определено" }}</div>
+    <div class="name_d">Фамилия: {{ user.firstname || "не определено" }}</div>
+    <div class="name_d">Дата рождения: {{ user.dateOfBirth | date}}</div>
+    <div class="name_d">Домашний адрес: {{ user.homeAddress || "не определено" }}</div>
+    <div class="name_d">Почта: {{ user.email }}</div>
+  </div>
+  <h1>Документы</h1>
+  <div>
+    <div *ngFor="let document of user.documents" class="doc">
+      <h2>{{ document.title }}</h2>
+      <h3>{{ document.doctor }}</h3>
+      <h3>Индикаторы:</h3>
+    <div  class="indicator">
+       <div class="indicator1" *ngFor="let indicator of document.indicators">
+          <div>{{ indicator.indicatorName }}: {{ indicator.indicatorValue }}</div>
+       </div> 
+    </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="user">
+  <h2 class="h2new">Создание документа</h2>
+  <button mat-raised-button color="primary" (click)="chooseDocType()">Выбрать{{choosedDocType ? ' новый' : ''}} шаблон</button>
+  <app-doc-edit *ngIf="choosedDocType && doc" [doc]="doc" (docSave)="docSave($event)"></app-doc-edit>
+</div>
+<mat-spinner *ngIf="!user" class="loader"></mat-spinner>

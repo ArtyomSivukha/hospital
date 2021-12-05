@@ -1,0 +1,109 @@
+<mat-card class="sign-cont">
+  <h2 class="sign-cont__title">Регистрация</h2>
+  <a class="sign-cont__sub-title" [routerLink]="['/sign', 'in']">
+    <button class="sign-link" mat-icon-button color="accent">
+      <mat-icon class="sign-link__icon">refresh</mat-icon></button
+    >Авторизация
+  </a>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="sign-form">
+    <mat-form-field class="sign-form__field" appearance="outline">
+      <mat-label>Почта</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="Email"
+        placeholder="pat@example.com"
+        autocomplete="off"
+      />
+      <mat-error
+        *ngIf="
+          profileForm.controls.Email.hasError('email') &&
+          !profileForm.controls.Email.hasError('required')
+        "
+      >
+        Введите корректное значение!
+      </mat-error>
+      <mat-error *ngIf="profileForm.controls.Email.hasError('required')">
+        Поле <strong>обязательное</strong>!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="sign-form__field" appearance="outline">
+      <mat-label>Имя пользователя</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="UserName"
+        placeholder="Пр. username"
+        autocomplete="off"
+      />
+      <mat-error
+        *ngIf="
+          profileForm.controls.UserName.hasError('minlength') &&
+          !profileForm.controls.UserName.hasError('required')
+        "
+      >
+        Не менее 8 символов!
+      </mat-error>
+      <mat-error *ngIf="profileForm.controls.UserName.hasError('required')">
+        Поле <strong>обязательное</strong>!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="sign-form__field" appearance="outline">
+      <mat-label>Пароль</mat-label>
+      <input
+        type="password"
+        matInput
+        formControlName="Password"
+        placeholder="Пр. ahdJsak23"
+        autocomplete="off"
+      />
+      <mat-error
+        *ngIf="
+          profileForm.controls.Password.hasError('minlength') &&
+          !profileForm.controls.Password.hasError('required')
+        "
+      >
+        Не менее 8 символов!
+      </mat-error>
+      <mat-error *ngIf="profileForm.controls.Password.hasError('required')">
+        Поле <strong>обязательное</strong>!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="sign-form__field" appearance="outline">
+      <mat-label>Повторите пароль</mat-label>
+      <input
+        type="password"
+        matInput
+        formControlName="PasswordConfirmation"
+        placeholder="Пр. ahdJsak23"
+        autocomplete="off"
+      />
+      <mat-error
+        *ngIf="
+          profileForm.controls.PasswordConfirmation.hasError('minlength') &&
+          !profileForm.controls.PasswordConfirmation.hasError('required')
+        "
+      >
+        Не менее 5 символов!
+      </mat-error>
+      <mat-error
+        *ngIf="profileForm.controls.PasswordConfirmation.hasError('required')"
+      >
+        Поле <strong>обязательное</strong>!
+      </mat-error>
+    </mat-form-field>
+    <mat-error *ngIf="showError" class="sign-form__field">{{
+      showError || "Заполните корректно форму!"
+    }}</mat-error>
+    <div class="sign-submit">
+      <button
+        type="submit"
+        mat-mini-fab
+        color="primary"
+        [disabled]="!profileForm.valid && showError"
+      >
+        <mat-icon class="sign-submit__icon">send</mat-icon>
+      </button>
+    </div>
+  </form>
+</mat-card>

@@ -1,0 +1,10 @@
+<div>
+  <div *ngFor="let document of documents" class="doc">
+    <h2>{{ document.title }}</h2>
+    <h3>{{ document.doctor }}</h3>
+    <h4>Индикаторы:</h4>
+    <div *ngFor="let indicator of document.indicators" class="ind-item">
+      <div>{{ indicator.indicatorName }}: {{ indicator.indicatorValue }}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<header>
+  <div class="link-cont" *ngIf="!user">
+    <a class="link-cont" [routerLink]="['/sign', 'in']" routerLinkActive="active">Авторизация</a>
+    <a class="link-cont" [routerLink]="['/sign', 'up']" routerLinkActive="active">Регистрация</a>
+  </div>
+  <div class="link-cont" *ngIf="user && user.roleId !== 1">
+    <a [routerLink]="['/doc-type']" routerLinkActive="active">Шаблоны</a>
+  </div>
+  <div class="link-cont" *ngIf="user && user.roleId !== 1">
+    <a [routerLink]="['/patient']" routerLinkActive="active">Пациенты</a>
+  </div>
+  <div class="link-cont" *ngIf="user?.roleId === 1">
+    <a [routerLink]="['/doc', 'user']" routerLinkActive="active">Мои документы</a>
+  </div>
+  <div class="link-cont" *ngIf="user?.roleId === 3">
+    <a [routerLink]="['institution']" routerLinkActive="active">Учреждения</a>
+  </div>
+  <div class="link-cont" *ngIf="user && user.roleId !== 1">
+    <a [routerLink]="['/doc', user?.roleId === 3 ? 'admin' : 'doctor']" routerLinkActive="active">Документы</a>
+  </div>
+  <div class="link-cont" *ngIf="user && user.roleId === 3">
+    <a [routerLink]="['/users']" routerLinkActive="active">Пользователи</a>
+  </div>
+  <div class="link-cont" *ngIf="user" (click)="openProfile()" style="cursor: pointer; margin-left: 3rem;">
+    <div style="color: white">Профиль</div>
+  </div>
+  <div class="link-cont" *ngIf="user" (click)="logout()" style="cursor: pointer;">
+    <div style="color: white">Выйти</div>
+  </div>
+  <div class="icon">
+    <img src="../../assets/icon1.svg" />
+  </div>
+</header>

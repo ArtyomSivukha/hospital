@@ -1,0 +1,76 @@
+<mat-card class="sign-cont">
+  <h2 class="sign-cont__title">Авторизация</h2>
+  <a class="sign-cont__sub-title" [routerLink]="['/sign', 'up']">
+    <button class="sign-link" mat-icon-button color="accent">
+      <mat-icon class="sign-link__icon">refresh</mat-icon></button
+    >Регистрация
+  </a>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="sign-form">
+    <mat-form-field class="sign-form__field" appearance="outline">
+      <mat-label>Почта</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="Email"
+        placeholder="pat@example.com"
+        autocomplete="off"
+      />
+      <mat-error
+        *ngIf="
+          profileForm.controls.Email.hasError('email') &&
+          !profileForm.controls.Email.hasError('required')
+        "
+      >
+        Введите корректное значение!
+      </mat-error>
+      <mat-error *ngIf="profileForm.controls.Email.hasError('required')">
+        Поле <strong>обязательное</strong>!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="sign-form__field" appearance="outline">
+      <mat-label>Пароль</mat-label>
+      <input
+        [type]="passwordHide ? 'password' : 'text'"
+        matInput
+        formControlName="Password"
+        placeholder="ahdJsak23"
+        autocomplete="off"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="passwordHide = !passwordHide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="passwordHide"
+      >
+        <mat-icon>{{
+          passwordHide ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="
+          profileForm.controls.Password.hasError('minlength') &&
+          !profileForm.controls.Password.hasError('required')
+        "
+      >
+        Не менее 5 символов!
+      </mat-error>
+      <mat-error *ngIf="profileForm.controls.Password.hasError('required')">
+        Поле <strong>обязательное</strong>!
+      </mat-error>
+    </mat-form-field>
+    <mat-error *ngIf="showError" class="sign-form__field">{{
+      showError || "Заполните корректно форму!"
+    }}</mat-error>
+    <div class="sign-submit">
+      <button
+        type="submit"
+        mat-mini-fab
+        color="primary"
+        [disabled]="!profileForm.valid && showError"
+      >
+        <mat-icon class="sign-submit__icon">send</mat-icon>
+      </button>
+    </div>
+  </form>
+</mat-card>

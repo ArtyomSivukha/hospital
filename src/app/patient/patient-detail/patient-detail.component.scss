@@ -1,0 +1,78 @@
+:host {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+
+  > * {
+    flex: 1;
+  }
+
+  .doc {
+    background: rgba(255, 255, 255, 0.253);
+    padding: 2rem;
+    margin-top: 1rem;
+    width: 80%;
+    margin: 1rem auto;
+    border-radius: 10px;
+    font-family: Inter;
+  }
+  .indicator{ 
+    display: flex;
+    flex-direction: column;
+  }
+  .indicator1{  
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    font-size: 18px;
+    font-weight: 400;
+  }
+}
+h1{
+  font-size: 2rem;
+  font-weight: 100;
+  margin: 1rem 2rem;
+  font-family: Inter;
+}
+h2{
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: Inter;
+}
+h3{
+  margin-left: 1rem;  
+  font-size: 18px;
+}
+
+.h2new {
+  text-align: left;
+  font-size: 2rem;
+  font-weight: 100;
+  margin: 1rem 0rem;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.253);
+  padding: 2rem;
+  margin-top: 1rem;
+  width: 80%;
+  margin: 1rem auto;
+  border-radius: 10px;
+  font-family: Inter;
+}
+.name_d {
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
